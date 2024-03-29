@@ -168,6 +168,7 @@ export default {
         'forward',
         'painter',
         'siblingNode',
+        'ai',
         'childNode',
         'deleteNode',
         'image',

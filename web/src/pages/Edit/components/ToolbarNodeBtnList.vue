@@ -47,6 +47,17 @@
         <span class="text">{{ $t('toolbar.insertSiblingNode') }}</span>
       </div>
       <div
+        v-if="item === 'ai'"
+        class="toolbarBtn"
+        :class="{
+          disabled: activeNodes.length <= 0 || hasGeneralization
+        }"
+        @click="$bus.$emit('aiGenerateChildNodes')"
+      >
+        <span class="icon iconfont icontianjiazijiedian"></span>
+        <span class="text">AI子节点</span>
+      </div>
+      <div
         v-if="item === 'childNode'"
         class="toolbarBtn"
         :class="{

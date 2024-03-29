@@ -42,6 +42,7 @@ import AssociativeLine from 'simple-mind-map/src/plugins/AssociativeLine.js'
 import TouchEvent from 'simple-mind-map/src/plugins/TouchEvent.js'
 import NodeImgAdjust from 'simple-mind-map/src/plugins/NodeImgAdjust.js'
 import SearchPlugin from 'simple-mind-map/src/plugins/Search.js'
+import Ai from 'simple-mind-map/src/plugins/Ai.js'
 import Painter from 'simple-mind-map/src/plugins/Painter.js'
 import ScrollbarPlugin from 'simple-mind-map/src/plugins/Scrollbar.js'
 import Formula from 'simple-mind-map/src/plugins/Formula.js'
@@ -96,6 +97,7 @@ MindMap.usePlugin(MiniMap)
   .usePlugin(NodeImgAdjust)
   .usePlugin(TouchEvent)
   .usePlugin(SearchPlugin)
+  .usePlugin(Ai)
   .usePlugin(Painter)
   .usePlugin(Formula)
 // .usePlugin(Cooperate) // 协同插件
@@ -189,6 +191,7 @@ export default {
     this.$bus.$on('startTextEdit', this.handleStartTextEdit)
     this.$bus.$on('endTextEdit', this.handleEndTextEdit)
     this.$bus.$on('createAssociativeLine', this.handleCreateLineFromActiveNode)
+    this.$bus.$on('aiGenerateChildNodes', this.handleAiGenerateChildNodes)
     this.$bus.$on('startPainter', this.handleStartPainter)
     this.$bus.$on('node_tree_render_end', this.handleHideLoading)
     this.$bus.$on('showLoading', this.handleShowLoading)
@@ -202,6 +205,7 @@ export default {
     this.$bus.$off('startTextEdit', this.handleStartTextEdit)
     this.$bus.$off('endTextEdit', this.handleEndTextEdit)
     this.$bus.$off('createAssociativeLine', this.handleCreateLineFromActiveNode)
+    this.$bus.$off('aiGenerateChildNodes', this.handleAiGenerateChildNodes)
     this.$bus.$off('startPainter', this.handleStartPainter)
     this.$bus.$off('node_tree_render_end', this.handleHideLoading)
     this.$bus.$off('showLoading', this.handleShowLoading)
@@ -219,6 +223,12 @@ export default {
 
     handleCreateLineFromActiveNode() {
       this.mindMap.associativeLine.createLineFromActiveNode()
+    },
+
+    handleAiGenerateChildNodes() {
+      //console.log('handleAiGenerateChildNodes');
+      //console.log(this.mindMap);
+      this.mindMap.ai.generateChildNodes()
     },
 
     handleStartPainter() {
@@ -422,6 +432,7 @@ export default {
         'view_data_change',
         'back_forward',
         'node_contextmenu',
+        'ai_click',
         'node_click',
         'draw_click',
         'expand_btn_click',

@@ -216,6 +216,7 @@ export default {
   },
   created() {
     this.$bus.$on('node_contextmenu', this.show)
+    this.$bus.$on('ai_click', this.hide)
     this.$bus.$on('node_click', this.hide)
     this.$bus.$on('draw_click', this.hide)
     this.$bus.$on('expand_btn_click', this.hide)
@@ -224,6 +225,7 @@ export default {
   },
   beforeDestroy() {
     this.$bus.$off('node_contextmenu', this.show)
+    this.$bus.$off('ai_click', this.hide)
     this.$bus.$off('node_click', this.hide)
     this.$bus.$off('draw_click', this.hide)
     this.$bus.$off('expand_btn_click', this.hide)
