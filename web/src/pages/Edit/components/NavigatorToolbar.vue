@@ -80,6 +80,7 @@
         @click="toggleDark"
       ></div>
     </div>
+    <!--
     <div class="item">
       <el-dropdown @command="handleCommand">
         <div class="btn iconfont iconbangzhu"></div>
@@ -93,6 +94,7 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+    -->
   </div>
 </template>
 
