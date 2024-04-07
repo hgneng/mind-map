@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><link rel="icon" href="dist/logo.ico"><title>思绪思维导图</title><script>// 自定义静态资源的路径
       window.externalPublicPath = './dist/'
       // 接管应用
-      window.takeOverApp = true</script><link href="dist/css/chunk-vendors.css?d3fb10f06cc980c6545e" rel="stylesheet"><link href="dist/css/app.css?d3fb10f06cc980c6545e" rel="stylesheet"></head><body><noscript><strong>We're sorry but thoughts doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>const setTakeOverAppMethods = (data) => {
+      window.takeOverApp = true</script><link href="dist/css/chunk-vendors.css?1287cd98861be362737f" rel="stylesheet"><link href="dist/css/app.css?1287cd98861be362737f" rel="stylesheet"></head><body><noscript><strong>We're sorry but thoughts doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><script>const setTakeOverAppMethods = (data) => {
         window.takeOverAppMethods = {}
         // 获取思维导图数据的函数
         window.takeOverAppMethods.getMindMapData = () => {
@@ -9,7 +9,7 @@
         } 
         // 保存思维导图数据的函数
         window.takeOverAppMethods.saveMindMapData = (data) => {
-          console.log(data)
+          Drupal.saveDataLater(data);
         }
         // 获取语言的函数
         window.takeOverAppMethods.getLanguage = () => {
@@ -28,34 +28,11 @@
           console.log(config)
         }
       }
+
       window.onload = async () => {
         if (!window.takeOverApp) return
         // 请求数据
-        try {
-          const urlParams = new URLSearchParams(window.location.search);
-          const drupalPath = urlParams.get('path');
-          const id = urlParams.get('id');
-          const api = window.location.origin + drupalPath +
-            '/pbl/mindmap/data/' + id;
-          const response = await fetch(api);
-
-          // 确保响应成功
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-
-          // 解析 JSON 数据
-          const jsonData = await response.json();
-
-          // 更新组件数据
-          data = {
-            mindMapData: jsonData.data,
-            lang: 'zh',
-            localConfig: null
-          };
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
+        const data = await window.Drupal.loadData();
 
         //console.log(data);
         // 设置全局的方法
@@ -64,7 +41,20 @@
         window.$bus.$on('app_inited', (mindMap) => {
           console.log(mindMap)
         })
+
         // 可以通过window.$bus.$on()来监听应用的一些事件
+        window.$bus.$on('data_change', data => {
+          // 节点树数据改变
+          // data即完整数据中的root部分
+          window.Drupal.saveDataLater({root: data});
+        })
+
+        window.$bus.$on('view_data_change', data => {
+            // 视图数据改变
+            // data即完整数据中的view部分
+          window.Drupal.saveDataLater({view: data});
+        })
+
         // 实例化页面
         window.initApp()
-      }</script><script src="dist/js/chunk-vendors.js?d3fb10f06cc980c6545e"></script><script src="dist/js/app.js?d3fb10f06cc980c6545e"></script></body></html>
+      }</script><script src="dist/js/chunk-vendors.js?1287cd98861be362737f"></script><script src="dist/js/app.js?1287cd98861be362737f"></script></body></html>

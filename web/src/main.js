@@ -9,8 +9,11 @@ import 'viewerjs/dist/viewer.css'
 import VueViewer from 'v-viewer'
 import i18n from './i18n'
 import { getLang } from '@/api'
+import Drupal from './api/drupal';
 // import VConsole from 'vconsole'
 // const vConsole = new VConsole()
+
+window.Drupal = Drupal;
 
 Vue.config.productionTip = false
 const bus = new Vue()

@@ -562,7 +562,7 @@ export default {
       if (this.activeNodes.length <= 0) {
         return
       }
-      ;[
+      [
         'shape',
         'paddingX',
         'paddingY',
