@@ -25,6 +25,7 @@
         </el-popover>
       </div>
       <!-- 导出 -->
+      <!-- 保存到服务器，禁用相关按钮
       <div class="toolbarBlock">
         <div class="toolbarBtn" @click="openDirectory">
           <span class="icon iconfont icondakai"></span>
@@ -117,6 +118,7 @@
           </div>
         </div>
       </div>
+      -->
     </div>
     <NodeImage></NodeImage>
     <NodeHyperlink></NodeHyperlink>
@@ -140,6 +142,7 @@ import { mapState } from 'vuex'
 import { Notification } from 'element-ui'
 import exampleData from 'simple-mind-map/example/exampleData'
 import { getData } from '../../../api'
+import Drupal from '../../../api/drupal'
 import ToolbarNodeBtnList from './ToolbarNodeBtnList.vue'
 import { throttle } from 'simple-mind-map/src/utils/index'
 

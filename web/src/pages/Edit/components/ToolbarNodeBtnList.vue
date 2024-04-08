@@ -1,5 +1,9 @@
 <template>
   <div class="toolbarNodeBtnList" :class="[dir, { isDark: isDark }]">
+    <div class="toolbarBtn" @click="saveData()">
+      <span class="icon iconfont iconlingcunwei"></span>
+      <span class="text">保存</span>
+    </div>
     <template v-for="item in list">
       <div
         v-if="item === 'back'"
@@ -258,7 +262,17 @@ export default {
     // 打开公式侧边栏
     showFormula() {
       this.setActiveSidebar('formulaSidebar')
-    }
+    },
+
+    // 保存
+    async saveData() {
+      const ret = await Drupal.saveData();
+      if (ret) {
+        this.$message.success('已保存');
+      } else {
+        this.$message.error('保存失败');
+      }
+    },
   }
 }
 </script>

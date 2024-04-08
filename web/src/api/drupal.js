@@ -1,6 +1,9 @@
 // 在main.js里引用
 // 所有服务器后端相关的逻辑都写在这个文件里
 
+import { getData } from './index'
+import { Message } from 'element-ui';
+
 const Drupal = {
   mindMapData: null,
 
@@ -39,6 +42,7 @@ const Drupal = {
 
   // 保存数据到服务器
   pendingSaveEvent: null,
+  hasShownAutoSaveMessage: false,
 
   // 1分钟保存1次
   saveDataLater(data) {
@@ -59,13 +63,18 @@ const Drupal = {
     }
 
     this.pendingSaveEvent = setTimeout(() => {
-      Drupal.saveData(data);
+      Drupal.saveData();
       Drupal.pendingSaveEvent = null;
+      if (!Drupal.hasShownAutoSaveMessage) {
+        Message.success('已自动保存（每分钟保存一次，仅第一分钟显示消息提示）');
+        Drupal.hasShownAutoSaveMessage = true;
+      }
     }, 60000);
   },
 
-  saveData(data) {
-    console.log('saveData', data);
+  async saveData() {
+    const mindMapData = getData()
+    console.log('saveData', mindMapData);
     //console.log('this.mindMapData', this.mindMapData);
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -74,22 +83,25 @@ const Drupal = {
     const api = window.location.origin + drupalPath +
       'pbl/mindmap/save-data/' + id;
 
-    fetch(api, {
+    const response = await fetch(api, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(this.mindMapData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // @todo: show success result
-      })
-      .catch(error => {
-        // 请求失败时处理错误
-        console.error(error);
-
-        // @todo: show fail result
+        body: JSON.stringify(mindMapData)
       });
+
+
+    // 确保响应成功
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    // 解析 JSON 数据
+    const json = await response.json();
+    if (json && json.code && json.code == 200) {
+      return true;
+    }
+
+    return false;
   }
 }
 
