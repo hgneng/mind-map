@@ -1,6 +1,10 @@
+import { Loading } from 'element-ui';
+
 class Ai {
+  static loadingInstance = null;
+
   constructor({ mindMap }) {
-    this.mindMap = mindMap
+    this.mindMap = mindMap;
     this.bindEvent()
   }
 
@@ -8,6 +12,7 @@ class Ai {
     this.generateChildNodes = this.generateChildNodes.bind(this)
     this.getTextFromHTML = this.getTextFromHTML.bind(this)
     this.mindMap.on('ai_click', this.generateChildNodes)
+    this.mindMap.keyCommand.addShortcut('Alt+Tab', this.generateChildNodes)
   }
 
   unBindEvent() {
@@ -44,7 +49,12 @@ class Ai {
   }
 
   generateChildNodes(node) {
-    console.log('Ai.generateChildNodes')
+    console.log('Ai.generateChildNodes');
+
+    if (!Ai.loadingInstance) {
+      Ai.loadingInstance = Loading.service({text: '思考中...'});
+    }
+
     if (!node) {
       let activeNodeList = this.mindMap.renderer.activeNodeList
       if (activeNodeList.length <= 0) return
@@ -54,7 +64,13 @@ class Ai {
     let question = this.getTextFromHTML(node.nodeData.data.text);
     //console.log(node)
     let mindMap = this.mindMap;
-    fetch('https://zhiwei-tech.com/test/feixiang/ai/mindmap?q=' + question)
+    const urlParams = new URLSearchParams(window.location.search);
+    const drupalPath = urlParams.get('path');
+    const id = urlParams.get('id');
+    const api = window.location.origin + drupalPath +
+      'ai/mindmap/?q=' + question;
+
+    fetch(api)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -68,6 +84,10 @@ class Ai {
       })
       .catch(error => {
         console.error('Error:', error);
+      })
+      .finally(() => {
+        Ai.loadingInstance.close();
+        Ai.loadingInstance = null;
       });
   }
 

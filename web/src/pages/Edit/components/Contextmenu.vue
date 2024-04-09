@@ -16,6 +16,14 @@
       </div>
       <div
         class="item"
+        @click="exec('INSERT_AI_NODES')"
+        :class="{ disabled: isGeneralization }"
+      >
+        <span class="name">插入AI子节点</span>
+        <span class="desc">Alt + Enter</span>
+      </div>
+      <div
+        class="item"
         @click="exec('INSERT_CHILD_NODE')"
         :class="{ disabled: isGeneralization }"
       >
@@ -342,6 +350,9 @@ export default {
         case 'REMOVE_NOTE':
           this.node.setNote('')
           break
+        case 'INSERT_AI_NODES':
+          this.$bus.$emit('aiGenerateChildNodes');
+          break;
         default:
           this.$bus.$emit('execCommand', key, ...args)
           break
