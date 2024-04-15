@@ -61,14 +61,28 @@ class Ai {
       node = activeNodeList[0]
     }
 
+    let parents = '';
+    let parentNode = node;
+    while (!parentNode.isRoot) {
+      parentNode = parentNode.parent;
+      if (parents) {
+        parents += '-';
+      }
+
+      parents += '[' + this.getTextFromHTML(parentNode.nodeData.data.text) + ']';
+    }
+
     let question = this.getTextFromHTML(node.nodeData.data.text);
     //console.log(node)
     let mindMap = this.mindMap;
     const urlParams = new URLSearchParams(window.location.search);
     const drupalPath = urlParams.get('path');
     const id = urlParams.get('id');
-    const api = window.location.origin + drupalPath +
+    let api = window.location.origin + drupalPath +
       'ai/mindmap/?q=' + question;
+    if (parents)  {
+      api += '&parents=' + encodeURIComponent(parents);
+    }
 
     fetch(api)
       .then(response => response.json())
