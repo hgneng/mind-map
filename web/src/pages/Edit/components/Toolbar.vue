@@ -131,13 +131,13 @@
 </template>
 
 <script>
-import NodeImage from './NodeImage'
-import NodeHyperlink from './NodeHyperlink'
+//import NodeImage from './NodeImage'
+//import NodeHyperlink from './NodeHyperlink'
 import NodeIcon from './NodeIcon'
-import NodeNote from './NodeNote'
-import NodeTag from './NodeTag'
-import Export from './Export'
-import Import from './Import'
+//import NodeNote from './NodeNote'
+//import NodeTag from './NodeTag'
+//import Export from './Export'
+//import Import from './Import'
 import { mapState } from 'vuex'
 import { Notification } from 'element-ui'
 import exampleData from 'simple-mind-map/example/exampleData'
@@ -155,13 +155,13 @@ let fileHandle = null
 export default {
   name: 'Toolbar',
   components: {
-    NodeImage,
-    NodeHyperlink,
+//    NodeImage,
+//    NodeHyperlink,
     NodeIcon,
-    NodeNote,
-    NodeTag,
-    Export,
-    Import,
+//    NodeNote,
+//    NodeTag,
+//    Export,
+//    Import,
     ToolbarNodeBtnList
   },
   data() {
@@ -174,14 +174,14 @@ export default {
         'ai',
         'childNode',
         'deleteNode',
-        'image',
+//        'image',
         'icon',
-        'link',
-        'note',
-        'tag',
-        'summary',
+//        'link',
+//        'note',
+//        'tag',
+//        'summary',
         'associativeLine',
-        'formula'
+//        'formula'
       ],
       horizontalList: [],
       verticalList: [],

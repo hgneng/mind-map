@@ -272,6 +272,11 @@ export const shortcutKeyList = [
         value: 'Tab'
       },
       {
+        icon: 'icontianjiazijiedian',
+        name: '插入AI子节点',
+        value: 'Alt + Enter'
+      },
+      {
         icon: 'iconjiedian',
         name: '插入同级节点',
         value: 'Enter'

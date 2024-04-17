@@ -12,7 +12,7 @@ class Ai {
     this.generateChildNodes = this.generateChildNodes.bind(this)
     this.getTextFromHTML = this.getTextFromHTML.bind(this)
     this.mindMap.on('ai_click', this.generateChildNodes)
-    this.mindMap.keyCommand.addShortcut('Alt+Tab', this.generateChildNodes)
+    this.mindMap.keyCommand.addShortcut('Alt+Enter', this.generateChildNodes)
   }
 
   unBindEvent() {
@@ -66,10 +66,11 @@ class Ai {
     while (!parentNode.isRoot) {
       parentNode = parentNode.parent;
       if (parents) {
-        parents += '-';
+        parents = '-' + parents;
       }
 
-      parents += '[' + this.getTextFromHTML(parentNode.nodeData.data.text) + ']';
+      parents = '[' + this.getTextFromHTML(parentNode.nodeData.data.text) + ']' +
+        parents;
     }
 
     let question = this.getTextFromHTML(node.nodeData.data.text);
