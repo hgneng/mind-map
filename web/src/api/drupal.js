@@ -5,6 +5,7 @@ import { getData } from './index'
 import { Message } from 'element-ui';
 
 const Drupal = {
+  mindMap: null,
   mindMapData: null,
 
   // 从服务器加载数据
@@ -73,8 +74,9 @@ const Drupal = {
   },
 
   async saveData() {
-    const mindMapData = getData()
-    console.log('saveData', mindMapData);
+    const mindMapData = getData();
+    this.mindMapData = mindMapData;
+    //console.log('saveData', mindMapData);
     //console.log('this.mindMapData', this.mindMapData);
 
     const urlParams = new URLSearchParams(window.location.search);

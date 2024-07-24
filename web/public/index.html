@@ -58,6 +58,7 @@
         setTakeOverAppMethods(data)
         // 思维导图实例创建完成事件
         window.$bus.$on('app_inited', (mindMap) => {
+          window.Drupal.mindMap = mindMap;
           console.log(mindMap)
         })
 
