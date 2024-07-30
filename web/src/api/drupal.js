@@ -15,7 +15,7 @@ const Drupal = {
       const drupalPath = urlParams.get('path');
       const id = urlParams.get('id');
       const api = window.location.origin + drupalPath +
-        'pbl/mindmap/load-data/' + id;
+        'mindmap/load-data/' + id;
       const response = await fetch(api);
 
       // 确保响应成功
@@ -83,7 +83,7 @@ const Drupal = {
     const drupalPath = urlParams.get('path');
     const id = urlParams.get('id');
     const api = window.location.origin + drupalPath +
-      'pbl/mindmap/save-data/' + id;
+      'mindmap/save-data/' + id;
 
     const response = await fetch(api, {
         method: "POST",
