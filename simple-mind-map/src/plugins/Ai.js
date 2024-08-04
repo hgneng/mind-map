@@ -80,7 +80,7 @@ class Ai {
     const drupalPath = urlParams.get('path');
     const id = urlParams.get('id');
     let api = window.location.origin + drupalPath +
-      'ai/mindmap/?q=' + question;
+      '../ai/mindmap/?q=' + question;
     if (parents)  {
       api += '&parents=' + encodeURIComponent(parents);
     }
