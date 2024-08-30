@@ -2,7 +2,7 @@
   <div class="toolbarNodeBtnList" :class="[dir, { isDark: isDark }]">
     <div class="toolbarBtn" @click="saveData()">
       <span class="icon iconfont iconlingcunwei"></span>
-      <span class="text">保存</span>
+      <span class="text">{{ $t('toolbar.save') }}</span>
     </div>
     <template v-for="item in list">
       <div

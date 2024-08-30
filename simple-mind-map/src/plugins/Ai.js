@@ -52,7 +52,7 @@ class Ai {
     console.log('Ai.generateChildNodes');
 
     if (!Ai.loadingInstance) {
-      Ai.loadingInstance = Loading.service({text: '思考中...'});
+      Ai.loadingInstance = Loading.service({text: 'thinking...'});
     }
 
     if (!node) {

@@ -14,6 +14,13 @@ const Drupal = {
       const urlParams = new URLSearchParams(window.location.search);
       const drupalPath = urlParams.get('path');
       const id = urlParams.get('id');
+      let lang = urlParams.get('lang');
+      if (lang && lang == 'en') {
+        lang = 'en';
+      } else {
+        lang = 'zh';
+      }
+
       const api = window.location.origin + drupalPath +
         'mindmap/load-data/' + id;
       const response = await fetch(api);
@@ -27,10 +34,11 @@ const Drupal = {
       const json = await response.json();
       if (json && json.data) {
         this.mindMapData = json.data;
+
         // 更新组件数据
         return {
           mindMapData: this.mindMapData,
-          lang: 'zh',
+          lang: lang,
           localConfig: null
         };
       }
@@ -47,6 +55,7 @@ const Drupal = {
 
   // 1分钟保存1次
   saveDataLater(data) {
+    console.log('saveDataLater', this.$t('other.autosave'));
     let hasDiff = false;
     for (const [key, value] of Object.entries(data)) {
       if (JSON.stringify(this.mindMapData[key]) != JSON.stringify(value)) {
@@ -67,7 +76,7 @@ const Drupal = {
       Drupal.saveData();
       Drupal.pendingSaveEvent = null;
       if (!Drupal.hasShownAutoSaveMessage) {
-        Message.success('已自动保存（每分钟保存一次，仅第一分钟显示消息提示）');
+        Message.success(this.$t('other.autosave'));
         Drupal.hasShownAutoSaveMessage = true;
       }
     }, 60000);

@@ -227,6 +227,7 @@ export default {
     reserve: '保留'
   },
   toolbar: {
+    save: '保存',
     undo: '回退',
     redo: '前进',
     insertSiblingNode: '同级节点',
@@ -308,6 +309,7 @@ export default {
     removeFormat: '清除样式'
   },
   other: {
-    loading: '正在加载，请稍后...'
+    loading: '正在加载，请稍后...',
+    autosave: '已自动保存（每分钟保存一次，仅第一分钟显示消息提示）'
   }
 }

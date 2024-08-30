@@ -230,6 +230,7 @@ export default {
     reserve: 'Reserve'
   },
   toolbar: {
+    save: 'Save',
     undo: 'Undo',
     redo: 'Redo',
     insertSiblingNode: 'Sibling node',
@@ -314,6 +315,7 @@ export default {
     removeFormat: 'Clear Style'
   },
   other: {
-    loading: 'Loading, please wait...'
+    loading: 'Loading, please wait...',
+    autosave: 'Saved automatically (saved every minute, only show this notice at the first time)'
   }
 }
