@@ -22,7 +22,7 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const lang = urlParams.get('lang');
-      if (lang.indexOf('en') >= 0) {
+      if (lang && lang.indexOf('en') >= 0) {
         document.getElementById('loading-tips').innerHTML = 'Loading……<br><br>(It may take half a minute for the first time.)';
       } else {
         document.getElementById('loading-tips').innerHTML = '加载中……<br><br>（首次加载可能需要半分钟时间）';
