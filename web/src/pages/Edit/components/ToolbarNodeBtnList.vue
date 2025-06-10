@@ -59,7 +59,7 @@
         @click="$bus.$emit('aiGenerateChildNodes')"
       >
         <span class="icon iconfont icontianjiazijiedian"></span>
-        <span class="text">AI子节点</span>
+        <span class="text">{{ $t('toolbar.insertAiChildNode') }}</span>
       </div>
       <div
         v-if="item === 'childNode'"

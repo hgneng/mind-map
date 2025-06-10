@@ -55,7 +55,7 @@ const Drupal = {
 
   // 1分钟保存1次
   saveDataLater(data) {
-    console.log('saveDataLater', this.$t('other.autosave'));
+    //console.log('saveDataLater', this.$t('other.autosave'));
     let hasDiff = false;
     for (const [key, value] of Object.entries(data)) {
       if (JSON.stringify(this.mindMapData[key]) != JSON.stringify(value)) {

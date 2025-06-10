@@ -19,7 +19,7 @@
         @click="exec('INSERT_AI_NODES')"
         :class="{ disabled: isGeneralization }"
       >
-        <span class="name">插入AI子节点</span>
+        <span class="name">{{ $t('contextmenu.insertAiChildNode') }}</span>
         <span class="desc">Alt + Enter</span>
       </div>
       <div

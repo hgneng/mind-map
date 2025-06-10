@@ -17,9 +17,17 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"><div style="text-align:center; font-size:1.5rem; margin-top:5rem">Loading……<br><br>（It may take half a minute for the first time.）</div></div>
+    <div id="app"><div id='loading-tips' style="text-align:center; font-size:1.5rem; margin-top:5rem"></div></div>
     <!-- built files will be auto injected -->
     <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const lang = urlParams.get('lang');
+      if (lang.indexOf('en') >= 0) {
+        document.getElementById('loading-tips').innerHTML = 'Loading……<br><br>(It may take half a minute for the first time.)';
+      } else {
+        document.getElementById('loading-tips').innerHTML = '加载中……<br><br>（首次加载可能需要半分钟时间）';
+      }
+
       const setTakeOverAppMethods = (data) => {
         window.takeOverAppMethods = {}
         // 获取思维导图数据的函数
@@ -32,6 +40,9 @@
         }
         // 获取语言的函数
         window.takeOverAppMethods.getLanguage = () => {
+          if (data.lang == 'en') {
+            document.title = 'AI Mind Map';
+          }
           return data.lang
         }
         // 保存语言的函数

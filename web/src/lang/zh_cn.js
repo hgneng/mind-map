@@ -69,6 +69,7 @@ export default {
   },
   contextmenu: {
     insertSiblingNode: '插入同级节点',
+    insertAiChildNode: '插入AI子节点',
     insertChildNode: '插入子级节点',
     insertParentNode: '插入父节点',
     insertSummary: '插入概要',
@@ -231,6 +232,7 @@ export default {
     undo: '回退',
     redo: '前进',
     insertSiblingNode: '同级节点',
+    insertAiChildNode: 'AI子节点',
     insertChildNode: '子节点',
     deleteNode: '删除节点',
     image: '图片',

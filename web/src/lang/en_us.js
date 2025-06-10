@@ -69,6 +69,7 @@ export default {
   },
   contextmenu: {
     insertSiblingNode: 'Insert sibling node',
+    insertAiChildNode: 'Insert AI child node',
     insertChildNode: 'Insert child node',
     insertParentNode: 'Insert parent node',
     insertSummary: 'Insert summary',
@@ -234,6 +235,7 @@ export default {
     undo: 'Undo',
     redo: 'Redo',
     insertSiblingNode: 'Sibling node',
+    insertAiChildNode: 'AI Child node',
     insertChildNode: 'Child node',
     deleteNode: 'Delete node',
     image: 'Image',
