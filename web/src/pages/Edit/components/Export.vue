@@ -19,12 +19,13 @@
           size="mini"
           @keydown.native.stop
         ></el-input>
+        <!--
         <el-checkbox
           v-show="['smm', 'json'].includes(exportType)"
           v-model="widthConfig"
           style="margin-left: 12px"
           >{{ $t('export.include') }}</el-checkbox
-        >
+        >-->
       </div>
       <div
         class="paddingInputBox"
@@ -73,7 +74,7 @@
           </div>
         </div>
       </div>
-      <div class="tip">{{ $t('export.tips') }}</div>
+      <!--<div class="tip">{{ $t('export.tips') }}</div>-->
     </div>
     <span slot="footer" class="dialog-footer">
       <el-button @click="cancel">{{ $t('dialog.cancel') }}</el-button>

@@ -25,8 +25,8 @@
         </el-popover>
       </div>
       <!-- 导出 -->
-      <!-- 保存到服务器，禁用相关按钮
       <div class="toolbarBlock">
+        <!-- 保存到服务器，禁用相关按钮
         <div class="toolbarBtn" @click="openDirectory">
           <span class="icon iconfont icondakai"></span>
           <span class="text">{{ $t('toolbar.directory') }}</span>
@@ -47,6 +47,7 @@
           <span class="icon iconfont icondaoru"></span>
           <span class="text">{{ $t('toolbar.import') }}</span>
         </div>
+        -->
         <div
           class="toolbarBtn"
           @click="$bus.$emit('showExport')"
@@ -118,7 +119,6 @@
           </div>
         </div>
       </div>
-      -->
     </div>
     <NodeImage></NodeImage>
     <NodeHyperlink></NodeHyperlink>
@@ -136,7 +136,7 @@
 import NodeIcon from './NodeIcon'
 //import NodeNote from './NodeNote'
 //import NodeTag from './NodeTag'
-//import Export from './Export'
+import Export from './Export'
 //import Import from './Import'
 import { mapState } from 'vuex'
 import { Notification } from 'element-ui'
@@ -160,7 +160,7 @@ export default {
     NodeIcon,
 //    NodeNote,
 //    NodeTag,
-//    Export,
+    Export,
 //    Import,
     ToolbarNodeBtnList
   },

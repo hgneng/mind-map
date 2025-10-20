@@ -127,7 +127,7 @@ export default {
     paddingX: '水平内边距',
     paddingY: '垂直内边距',
     useMultiPageExport: '是否多页导出',
-    defaultFileName: '思维导图'
+    defaultFileName: 'AI脑图'
   },
   fullscreen: {
     fullscreenShow: '全屏查看',

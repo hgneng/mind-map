@@ -539,6 +539,7 @@ export const sidebarTriggerList = [
 
 // 下载类型列表
 export const downTypeList = [
+  /*
   {
     name: '专有文件',
     type: 'smm',
@@ -550,13 +551,13 @@ export const downTypeList = [
     type: 'json',
     icon: 'iconjson',
     desc: '流行的数据交换格式，可用于导入'
-  },
+  },*/
   {
     name: '图片',
     type: 'png',
     icon: 'iconPNG',
     desc: '适合查看分享'
-  },
+  },/*
   {
     name: 'SVG',
     type: 'svg',
@@ -568,13 +569,13 @@ export const downTypeList = [
     type: 'pdf',
     icon: 'iconpdf',
     desc: '适合打印'
-  },
+  },*/
   {
     name: 'Markdown',
     type: 'md',
     icon: 'iconmarkdown',
     desc: '便于其他软件打开'
-  },
+  },/*
   {
     name: 'XMind',
     type: 'xmind',
@@ -586,5 +587,5 @@ export const downTypeList = [
     type: 'txt',
     icon: 'iconTXT',
     desc: '纯文本文件'
-  }
+  }*/
 ]
